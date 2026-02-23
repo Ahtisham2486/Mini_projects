@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weather Api</title>
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>welcome to weather API</h1>
+        <form action="/currentCity" method="post">
+
+            <input type="text" name="city" placeholder="enter the name of city" required>
+            <button type="submit">submit </button>
+        </form>
+    <div class="forecast">
+    <form action="/forecast" method="post">
+       <!-- <input type="text" name="cityInput" placeholder="Enter city" /> -->
+        <input type="number" name="daysInput" placeholder="Days (1-10)" min="1" max="10" />
+        <button id="getForecast">Get Forecast</button>
+    </div>
+
+        <div id="forecastResult"></div>
+    </form>
+
+    </div>
+
+    <% if(weather){ %>
+        <div class="weather-result">
+            <h2> weather in :
+                <%= weather.location.name%> ,
+                    <%= weather.location.country %>,
+                        <%= weather.location.lat %>,
+                            ,<%= weather.location.lon %>
+            </h2>
+            <h3>Temperature: <%= weather.current.temp_c %>°C</h3>
+            <h3>Condition: <%= weather.current.condition.text %>
+            </h3>
+        </div>
+        <%}%>
+            <% if (error) { %>
+                <p style="color:red">
+                <h3>
+                    <%= error %>
+                </h3>
+                </p>
+                <% } %>
+
+</body>
+
+</html>
